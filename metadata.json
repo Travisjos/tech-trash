@@ -1,0 +1,6 @@
+{
+  "name": "Tech Trash: Municipal Smart Node",
+  "description": "Smart waste management platform for monitoring and settling municipal waste assets.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:wght@100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-primary: #2ecc71;
+  --color-secondary: #3498db;
+  --color-dark: #2c3e50;
+  --color-light: #f4f7f6;
+  --color-danger: #e74c3c;
+  --color-warning: #f1c40f;
+  --color-offline: #95a5a6;
+}
+
+@layer base {
+  body {
+    @apply font-sans antialiased bg-white text-[#333];
+  }
+}
+
+.tech-card {
+  @apply bg-white p-6 rounded-xl shadow-sm border border-black/5;
+}
+
+.stat-card {
+  @apply bg-white p-6 rounded-xl border-l-[5px] flex justify-between items-center shadow-sm;
+}
+
+.progress-wrapper {
+  @apply w-full bg-[#e0e0e0] rounded-lg h-5 overflow-hidden my-2.5;
+}
+
+.tech-btn {
+  @apply px-5 py-2.5 rounded-lg font-bold transition-all active:scale-95 disabled:opacity-50;
+}
+
+.frosted-bg {
+  @apply fixed inset-0 overflow-hidden pointer-events-none z-[-1];
+}
+
+.blob-emerald {
+  @apply absolute top-[-100px] left-[-100px] w-[500px] h-[500px] bg-primary/20 rounded-full blur-[120px];
+}
+
+.blob-blue {
+  @apply absolute bottom-[-100px] right-[-100px] w-[600px] h-[600px] bg-secondary/20 rounded-full blur-[150px];
+}
+
+.blob-indigo {
+  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-indigo-500/10 rounded-full blur-[100px];
+}

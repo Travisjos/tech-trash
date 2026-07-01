@@ -1,0 +1,73 @@
+{
+  "entities": {
+    "bin": {
+      "title": "Waste Bin",
+      "description": "Represents a physical smart trash bin unit.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "locationName": { "type": "string" },
+        "latitude": { "type": "number" },
+        "longitude": { "type": "number" },
+        "status": { "type": "string", "enum": ["online", "offline", "full", "maintenance"] },
+        "levels": {
+          "type": "object",
+          "properties": {
+            "degradable": { "type": "number", "description": "Percentage full (0-100)" },
+            "non_degradable": { "type": "number", "description": "Percentage full (0-100)" }
+          }
+        },
+        "lastUpdated": { "type": "string", "format": "date-time" },
+        "mode": { "type": "string", "enum": ["auto", "manual"] },
+        "subscriptionFee": { "type": "number" },
+        "amountPaid": { "type": "number" },
+        "subscriptionActive": { "type": "boolean" },
+        "userId": { "type": "string" }
+      },
+      "required": ["id", "name", "status"]
+    },
+    "depositLog": {
+      "title": "Deposit Log",
+      "description": "A record of waste being deposited in a bin.",
+      "type": "object",
+      "properties": {
+        "binId": { "type": "string" },
+        "type": { "type": "string", "enum": ["degradable", "non_degradable"] },
+        "weight": { "type": "number" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "userId": { "type": "string" }
+      },
+      "required": ["binId", "type", "timestamp"]
+    },
+    "user": {
+      "title": "User",
+      "description": "Application user profile.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "phoneNumber": { "type": "string" },
+        "role": { "type": "string", "enum": ["admin", "staff", "resident"] },
+        "displayName": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "registrationLocation": { "type": "string" }
+      },
+      "required": ["uid", "role"]
+    }
+  },
+  "firestore": {
+    "/bins/{binId}": {
+      "schema": "bin",
+      "description": "Collection of smart bins."
+    },
+    "/logs/{logId}": {
+      "schema": "depositLog",
+      "description": "History of waste deposits."
+    },
+    "/users/{userId}": {
+      "schema": "user",
+      "description": "User profiles."
+    }
+  }
+}
